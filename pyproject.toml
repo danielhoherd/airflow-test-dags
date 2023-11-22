@@ -6,7 +6,10 @@ line-length = 132
 #skip-string-normalization = true
 target-version = ['py38']
 
-[tool.pylint.messages_control]
-disable = """
-  C0301
-"""
+[tool.ruff]
+fixable = ["ALL"]
+select = ["E", "F", "Q", "S"]
+ignore = ["E501", "S311", "S603", "S608"]
+
+[tool.ruff.per-file-ignores]
+"**/__init__.py" = ["F401"]
