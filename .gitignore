@@ -1,3 +1,5 @@
+*.tar.gz
+*.tgz
 .DS_Store
 .env
 .git
