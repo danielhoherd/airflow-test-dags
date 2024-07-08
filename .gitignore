@@ -6,3 +6,4 @@
 __pycache__/
 airflow_settings.yaml
 astro
+upgrade-test*
