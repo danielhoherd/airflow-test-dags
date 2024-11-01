@@ -1,13 +1,12 @@
 """Test the validity of all DAGs. **USED BY DEV PARSE COMMAND DO NOT EDIT**"""
 
-from contextlib import contextmanager
 import logging
 import os
+from contextlib import contextmanager
 
 import pytest
-
-from airflow.models import DagBag, Variable, Connection
 from airflow.hooks.base import BaseHook
+from airflow.models import Connection, DagBag, Variable
 from airflow.utils.db import initdb
 
 # init airflow database
@@ -51,7 +50,7 @@ os.getenv = os_getenv_monkeypatch
 # =========== MONKEYPATCH VARIABLE.GET() ===========
 
 
-class magic_dict(dict):
+class MagicDict(dict):
     def __init__(self, *args, **kwargs):
         self.update(*args, **kwargs)
 
@@ -68,7 +67,7 @@ def variable_get_monkeypatch(key: str, default_var=_no_default, deserialize_json
     if default_var is not _no_default:
         return default_var
     if deserialize_json:
-        return magic_dict()
+        return MagicDict()
     return "NON_DEFAULT_MOCKED_VARIABLE_VALUE"
 
 
@@ -120,12 +119,11 @@ def get_import_errors():
 def test_file_imports(rel_path, rv):
     """Test for import errors on a file"""
     if os.path.exists(".astro/dag_integrity_exceptions.txt"):
-        with open(".astro/dag_integrity_exceptions.txt", "r") as f:
+        with open(".astro/dag_integrity_exceptions.txt") as f:
             exceptions = f.readlines()
     print(f"Exceptions: {exceptions}")
     if (rv != "No import errors") and rel_path not in exceptions:
         # If rv is not "No import errors," consider it a failed test
         raise Exception(f"{rel_path} failed to import with message \n {rv}")
-    else:
-        # If rv is "No import errors," consider it a passed test
-        print(f"{rel_path} passed the import test")
+    # If rv is "No import errors," consider it a passed test
+    print(f"{rel_path} passed the import test")

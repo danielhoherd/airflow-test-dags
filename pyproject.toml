@@ -1,15 +1,48 @@
-# https://github.com/psf/black#configuration-format
-[tool.black]
-exclude = '(venv|.vscode)'
-include = '\.pyi?$'
-line-length = 132
-#skip-string-normalization = true
-target-version = ['py38']
+# https://www.python.org/dev/peps/pep-0518/#file-format
 
+# https://docs.astral.sh/ruff/settings/
 [tool.ruff]
+line-length = 132
+target-version = "py312"
+
+[tool.ruff.lint]
 fixable = ["ALL"]
-select = ["E", "F", "Q", "S"]
-ignore = ["E501", "S311", "S603", "S608"]
+
+# https://docs.astral.sh/ruff/rules/
+select = [
+  "ASYNC",
+  "ARG",
+  "BLE",
+  "C",
+  "E",
+  "F",
+  "FBT",
+  "FLY",
+  "FURB",
+  "I",
+  "N",
+  "PERF",
+  "PGH",
+  "PL",
+  "Q",
+  "R",
+  "RUF",
+  "S",
+  "TID",
+  "UP",
+  "W",
+  "YTT",
+]
+
+ignore = [
+  "E501",
+  "FBT002",
+  "PERF401",
+  "S311",
+  "S603",
+  "S608",
+]
 
 [tool.ruff.per-file-ignores]
 "**/__init__.py" = ["F401"]
+".astro/test_dag_integrity_default.py" = ["ARG001", "ARG002"]

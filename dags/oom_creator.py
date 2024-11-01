@@ -1,6 +1,6 @@
+import sys
 import time
 from datetime import datetime
-import sys
 
 from airflow.decorators import (
     dag,
