@@ -15,7 +15,7 @@ from airflow.decorators import (
     default_args={
         "retries": 2,
     },
-    tags=["example"],
+    tags=["should-fail"],
 )
 def oom_creator():
     @task()

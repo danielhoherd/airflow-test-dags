@@ -32,7 +32,7 @@ def make_marker_line(length, fill_char="_"):
     default_args={
         "retries": 2,
     },
-    tags=["example"],
+    tags=["should-succeed"],
 )
 def long_line_printer():
     @task()

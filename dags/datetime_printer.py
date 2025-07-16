@@ -14,7 +14,7 @@ from airflow.decorators import (
     default_args={
         "retries": 2,
     },
-    tags=["example"],
+    tags=["should-succeed"],
 )
 def datetime_printer():
     @task()
