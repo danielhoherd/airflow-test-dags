@@ -8,7 +8,7 @@ repos:
       - id: python-check-blanket-type-ignore
       - id: text-unicode-replacement-char
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.3.0
+    rev: v2.4.1
     hooks:
       - id: codespell
   - repo: https://github.com/pre-commit/mirrors-prettier
@@ -17,7 +17,7 @@ repos:
       - id: prettier
         args: ["--print-width=135"]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: "v0.9.0"
+    rev: "v0.12.3"
     hooks:
       - id: ruff
         args:
@@ -59,11 +59,11 @@ repos:
       - id: remove-tabs
         exclude_types: [makefile, binary]
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.35.1
+    rev: v1.37.1
     hooks:
       - id: yamllint
   - repo: https://github.com/danielhoherd/pre-commit-hooks
-    rev: 976b58ba36fcd3313fed6d5a7abc228cec64f994
+    rev: 37614dad793bbbdea699c63c8b341ce1e2bf855a
     hooks:
       - id: CVE-2017-18342
       - id: remove-unicode-left-to-right-mark
