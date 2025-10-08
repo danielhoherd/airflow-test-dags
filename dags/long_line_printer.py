@@ -36,14 +36,16 @@ def make_marker_line(length, fill_char="_"):
 )
 def long_line_printer():
     @task()
-    def long_line_printer():
+    def print_increasingly_long_lines():
         """
         Print increasingly long lines
         """
 
-    for i in range(0, 33000, 128):
-        line = make_marker_line(i + 1)
-        print(line)
+        for i in range(0, 33000, 128):
+            line = make_marker_line(i + 1)
+            print(line)
+
+    print_increasingly_long_lines()
 
 
 long_line_printer = long_line_printer()
