@@ -22,7 +22,7 @@ with DAG(
         namespace=namespace,
         cmds=["sh", "-c", "mkdir -p /airflow/xcom/ ; echo '[1,2,3,4]' > /airflow/xcom/return.json ;"],
         name="write-xcom",
-        image="quay.io/astronomer/ap-init:3.21.3-5",
+        image="busybox",
         do_xcom_push=True,
         on_finish_action="delete_pod",
         in_cluster=True,
