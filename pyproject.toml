@@ -38,6 +38,7 @@ ignore = [
   "E501",
   "FBT002",
   "PERF401",
+  "PLR2004",
   "S311",
   "S603",
   "S608",
@@ -46,3 +47,8 @@ ignore = [
 [tool.ruff.lint.per-file-ignores]
 "**/__init__.py" = ["F401"]
 ".astro/test_dag_integrity_default.py" = ["ARG001", "ARG002"]
+"tests/*" = [
+  "S101",
+  "S105",
+  "S602",
+  ]
