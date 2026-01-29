@@ -2,14 +2,11 @@ import os
 import time
 from datetime import datetime
 
-from airflow.decorators import (
-    dag,
-    task,
-)
+from airflow.sdk import dag, task
 
 
 @dag(
-    schedule_interval="*/2 * * * *",
+    schedule="*/2 * * * *",
     start_date=datetime(2021, 1, 1),
     catchup=False,
     default_args={

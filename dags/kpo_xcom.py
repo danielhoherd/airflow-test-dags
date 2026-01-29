@@ -1,9 +1,9 @@
 import logging
 
-from airflow import DAG
-from airflow.operators.bash import BashOperator
+import pendulum
 from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperator
-from airflow.utils.dates import days_ago
+from airflow.providers.standard.operators.bash import BashOperator
+from airflow.sdk import DAG
 
 log = logging.getLogger(__name__)
 
@@ -14,8 +14,8 @@ with open("/var/run/secrets/kubernetes.io/serviceaccount/namespace") as f:
 with DAG(
     dag_id="example_xcom_task",
     default_args={"owner": "airflow"},
-    start_date=days_ago(2),
-    schedule_interval=None,
+    start_date=pendulum.today("UTC").add(days=-2),
+    schedule=None,
     tags=["core"],
 ) as dag:
     write_xcom = KubernetesPodOperator(
@@ -26,7 +26,7 @@ with DAG(
         do_xcom_push=True,
         on_finish_action="delete_pod",
         in_cluster=True,
-        task_id="write-xcom",
+        task_id="write_xcom",
         get_logs=True,
     )
 

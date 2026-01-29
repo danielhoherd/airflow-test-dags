@@ -10,6 +10,7 @@ fixable = ["ALL"]
 
 # https://docs.astral.sh/ruff/rules/
 select = [
+  "AIR",
   "ASYNC",
   "ARG",
   "BLE",
