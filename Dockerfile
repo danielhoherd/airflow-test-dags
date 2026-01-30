@@ -1,3 +1,3 @@
-FROM quay.io/astronomer/astro-runtime:12.5.0
+FROM astrocrpublic.azurecr.io/runtime:3.1-11
 
 LABEL repo.url=git@github.com:danielhoherd/airflow-test-dags.git

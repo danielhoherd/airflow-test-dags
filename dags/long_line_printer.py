@@ -1,9 +1,6 @@
 from datetime import datetime
 
-from airflow.decorators import (
-    dag,
-    task,
-)
+from airflow.sdk import dag, task
 
 
 def make_marker_line(length, fill_char="_"):
@@ -26,7 +23,7 @@ def make_marker_line(length, fill_char="_"):
 
 
 @dag(
-    schedule_interval="1-59/2 * * * *",
+    schedule="1-59/2 * * * *",
     start_date=datetime(2021, 1, 1),
     catchup=False,
     default_args={
